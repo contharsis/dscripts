@@ -1,27 +1,19 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#Requires AutoHotkey v2.0
+; ; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode("Input")  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
-F12::
-    Suspend, Off
+r::
+{
     Reload
+}
 
-Return
-
+#SuspendExempt
 `::
-    Suspend, Toggle
-    
-    If (A_IsSuspended == False)
-    {
-        MsgBox, Script ON
-    }
-    Else
-    {
-        MsgBox, Script OFF
-    }
-
-Return
+{
+    Suspend -1
+}
+#SuspendExempt False
 
 ; looping := False
 ; salvaging := False
